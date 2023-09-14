@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Body } from "./components/Body.styled";
+import { Wrapper } from "./components/Wrapper.styled";
 import { Input } from "./components/Input.styled";
-import { AddB } from "./components/AddB.styled";
+import { AddButton } from "./components/AddButton.styled";
 import { Content } from "./components/Content.styled";
 
 function Todo() {
@@ -65,7 +65,7 @@ function Todo() {
   };
 
   return (
-    <Body>
+    <Wrapper>
       <div>
         <Input
           name="task"
@@ -75,7 +75,7 @@ function Todo() {
           onChange={(e) => setTask(e.target.value)}
         />
 
-        <AddB onClick={addTask}>Add</AddB>
+        <AddButton onClick={addTask}>Add</AddButton>
 
         {tasks.map((task) => (
           <React.Fragment key={task.id}>
@@ -90,15 +90,16 @@ function Todo() {
                   textDecoration: task.completed ? "line-through" : "none",
                 }}
               >
-                <Content className="content">{task.data}</Content>
+                <Content>{task.data}</Content>
               </label>
-              <AddB onClick={() => handleDelete(task)}>Delete</AddB>
-              <AddB onClick={() => handleEdit(task)}>Edit</AddB>
+
+              <AddButton onClick={() => handleDelete(task)}>Delete</AddButton>
+              <AddButton onClick={() => handleEdit(task)}>Edit</AddButton>
             </div>
           </React.Fragment>
         ))}
       </div>
-    </Body>
+    </Wrapper>
   );
 }
 
